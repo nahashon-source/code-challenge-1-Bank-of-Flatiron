@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-function Search({ onSearchChange }) {
+function Search({searchTransaction}) {
   const [inputValue, setInputValue] = useState('');
 
   // Handle input change
   const handleChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-    onSearchChange(value);
+    searchTransaction(value);
   };
 
   return (

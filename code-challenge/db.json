@@ -111,6 +111,41 @@
       "category": "afya",
       "amount": "40",
       "id": 16
+    },
+    {
+      "date": "2024-08-06",
+      "description": "nash",
+      "category": "njima",
+      "amount": "3.99",
+      "id": 17
+    },
+    {
+      "date": "2024-08-06",
+      "description": "nash",
+      "category": "njima",
+      "amount": "3.99",
+      "id": 18
+    },
+    {
+      "date": "2024-08-06",
+      "description": "king",
+      "category": "ass",
+      "amount": "8",
+      "id": 19
+    },
+    {
+      "date": "2024-08-06",
+      "description": "king",
+      "category": "ass",
+      "amount": "8",
+      "id": 20
+    },
+    {
+      "date": "2024-08-06",
+      "description": "king",
+      "category": "ass",
+      "amount": "8",
+      "id": 21
     }
   ]
 }

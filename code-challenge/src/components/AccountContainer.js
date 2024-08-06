@@ -5,10 +5,10 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
+  // State to hold transactions
   const [transactions, setTransactions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
 
-  // Fetch transactions from the backend on component mount
+  // Fetch transactions from the server when the component mounts
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
@@ -24,9 +24,9 @@ function AccountContainer() {
     };
 
     fetchTransactions();
-  }, []); // Empty dependency array means this effect runs only once
-  console.log(transactions);
-  // Add a new transaction to the backend and update the state
+  }, []); // Empty array means this effect runs only once
+
+  // Add a new transaction to the server and update the state
   const addTransaction = async (transaction) => {
     try {
       const response = await fetch("http://localhost:8001/transactions", {
@@ -45,19 +45,20 @@ function AccountContainer() {
   };
 
   // Filter transactions based on the search term
-  const filteredTransactions = transactions.filter(
-    (transaction) =>
-      transaction.description
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase()) ||
-      transaction.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      transaction.amount.toString().includes(searchTerm)
-  );
+  function searchTransaction(searchTerm) {
+    const filteredTransactions = transactions.filter(
+      (transaction) =>
+        transaction.description
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+    );
+    setTransactions(filteredTransactions);
+  }
 
   return (
     <div>
-      <Search />
-      <AddTransactionForm />
+      <Search searchTransaction={searchTransaction} />
+      <AddTransactionForm addTransaction={addTransaction} />
       <TransactionsList transactions={transactions} />
     </div>
   );
